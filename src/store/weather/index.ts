@@ -65,12 +65,13 @@ export const userSlice = createSlice({
 
           if (action.payload.cod === 200) {
             state.weatherInfo = { ...action.payload };
+            state.error = "";
 
             // add city name to search list
             if (state.searchList.length === 10) {
               if (!state.searchList.includes(action.payload.name))
                 state.searchList = [
-                  ...state.searchList.slice(0, 9),
+                  ...state.searchList.slice(1, 9),
                   action.payload.name,
                 ];
             } else {
