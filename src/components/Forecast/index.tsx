@@ -37,9 +37,9 @@ const Forecast: React.FC = () => {
 
               return (
                 <li key={key}>
-                  <span>{`${day[date.getDay()]}, ${month[date.getMonth()]} ${
-                    date.getDate() + 1
-                  }`}</span>
+                  <span>{`${day[date.getDay()]}, ${
+                    month[date.getMonth()]
+                  } ${date.getDate()}`}</span>
 
                   <div className="day-list-values">
                     <span>{(item.main.temp - 273.15).toFixed(1)}°C</span>

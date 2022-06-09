@@ -101,6 +101,7 @@ export const userSlice = createSlice({
           state.forecastLoading = false;
 
           if (action.payload.cod === "200") {
+            console.log(action.payload.list);
             const _forecastInfo = action.payload.list.filter((item: any) =>
               item.dt_txt.includes("00:00:00")
             );
