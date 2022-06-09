@@ -37,7 +37,7 @@ const Forecast: React.FC = () => {
 
               return (
                 <li key={key}>
-                  <span>{`${day[date.getDay()]}, ${
+                  <span>{`${day[date.getDay() - 1]}, ${
                     month[date.getMonth()]
                   } ${date.getDate()}`}</span>
 

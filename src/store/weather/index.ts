@@ -71,7 +71,7 @@ export const userSlice = createSlice({
             if (state.searchList.length === 10) {
               if (!state.searchList.includes(action.payload.name))
                 state.searchList = [
-                  ...state.searchList.slice(1, 9),
+                  ...state.searchList.slice(1, 10),
                   action.payload.name,
                 ];
             } else {
@@ -101,7 +101,6 @@ export const userSlice = createSlice({
           state.forecastLoading = false;
 
           if (action.payload.cod === "200") {
-            console.log(action.payload.list);
             const _forecastInfo = action.payload.list.filter((item: any) =>
               item.dt_txt.includes("00:00:00")
             );

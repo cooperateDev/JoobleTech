@@ -40,7 +40,6 @@ const App: React.FC = () => {
     setCityName("Kyiv");
     dispatch(getWeatherInfoOfCity("Kyiv"));
     dispatch(getWeatherForecastInfoOfCity("Kyiv"));
-    console.log("hey")
   }, []);
 
   return (
