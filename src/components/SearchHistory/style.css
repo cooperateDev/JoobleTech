@@ -1,0 +1,19 @@
+.search-history-container {
+  border: 2px solid rgb(27, 185, 154);
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-list-item {
+  color: rgb(27, 185, 154);
+  font-weight: 500;
+  margin: 4px 8px;
+}
+
+.search-list-item:hover {
+  color: rgb(16, 121, 100);
+  cursor: pointer;
+}

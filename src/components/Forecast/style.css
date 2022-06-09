@@ -1,0 +1,41 @@
+.day-list {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  border-radius: 6px;
+  padding: 0;
+}
+
+.day-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 6px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.day-list li:hover {
+  background-color: aliceblue;
+}
+
+.day-list-values {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 60%;
+}
+
+.forecast-container {
+  margin-top: 16px;
+  margin-left: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+@media only screen and (max-width: 800px) {
+  .forecast-container {
+    margin-left: 0px;
+  }
+}

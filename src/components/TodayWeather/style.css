@@ -1,0 +1,22 @@
+.today-container {
+  width: max-content;
+  background-color: transparent;
+  padding: 15px;
+  max-width: 300px;
+  min-width: 230px;
+  border-radius: 8px 56px 8px 8px;
+  border: 2px solid;
+  border-color: rgb(27, 185, 154);
+  margin-top: 16px;
+  height: fit-content;
+}
+
+.today-degree {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.today-weather-info {
+  margin: 4px 0;
+}
