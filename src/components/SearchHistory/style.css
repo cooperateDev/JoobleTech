@@ -5,6 +5,7 @@
   padding: 16px;
   display: flex;
   flex-wrap: wrap;
+  width: 300px;
 }
 
 .search-list-item {

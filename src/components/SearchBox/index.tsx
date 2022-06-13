@@ -1,22 +1,37 @@
-import React from "react";
-import { useAppSelector } from "../../store/hooks";
+import React, { useContext, useEffect } from "react";
+
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  getWeatherForecastInfoOfCity,
+  getWeatherInfoOfCity,
+  setError,
+} from "../../store/weather";
+import { CityNameContext } from "../../context";
 
 import "./style.css";
 
-interface Props {
-  value: string;
-  error: string;
-  onChange: (cityName: string) => void;
-  handleClickSearch: () => void;
-}
+const SearchBox: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-const SearchBox: React.FC<Props> = ({
-  value,
-  error,
-  onChange,
-  handleClickSearch,
-}) => {
-  const requestError = useAppSelector((state) => state.weather.error);
+  // global state
+  const error = useAppSelector((state) => state.weather.error);
+  const { cityName, setCityName } = useContext(CityNameContext);
+
+  const handleClickSearch = () => {
+    if (!cityName) {
+      dispatch(setError("Please input city name"));
+    } else {
+      dispatch(setError(""));
+      dispatch(getWeatherInfoOfCity(cityName));
+      dispatch(getWeatherForecastInfoOfCity(cityName));
+    }
+  };
+
+  useEffect(() => {
+    setCityName("Kyiv");
+    dispatch(getWeatherInfoOfCity("Kyiv"));
+    dispatch(getWeatherForecastInfoOfCity("Kyiv"));
+  }, []);
 
   return (
     <>
@@ -25,10 +40,8 @@ const SearchBox: React.FC<Props> = ({
           type="text"
           className="search-input"
           placeholder="Search city"
-          value={value}
-          onChange={(e) => {
-            onChange(e.target.value);
-          }}
+          value={cityName}
+          onChange={(e) => setCityName(e.target.value)}
         />
 
         <button className="search-button" onClick={handleClickSearch}>
@@ -37,8 +50,6 @@ const SearchBox: React.FC<Props> = ({
       </div>
 
       {error && <p className="search-error">{error}</p>}
-
-      {requestError && <p className="search-error">{requestError}</p>}
     </>
   );
 };

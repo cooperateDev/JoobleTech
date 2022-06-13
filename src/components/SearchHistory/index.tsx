@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CityNameContext } from "../../context";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 import {
@@ -8,19 +9,17 @@ import {
 
 import "./style.css";
 
-interface Props {
-  handleChange: (cityName: string) => void;
-}
-
-const SearchHistory: React.FC<Props> = ({ handleChange }) => {
+const SearchHistory: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const { setCityName } = useContext(CityNameContext);
 
   const searchList = useAppSelector((state) => state.weather.searchList);
 
-  const handleClickSearch = (cityName: string) => {
-    handleChange(cityName);
-    dispatch(getWeatherInfoOfCity(cityName));
-    dispatch(getWeatherForecastInfoOfCity(cityName));
+  const handleClickSearch = (_cityName: string) => {
+    setCityName(_cityName);
+    dispatch(getWeatherInfoOfCity(_cityName));
+    dispatch(getWeatherForecastInfoOfCity(_cityName));
   };
 
   return (

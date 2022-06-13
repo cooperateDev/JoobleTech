@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import api from "../../services/weather.service";
 import { WeatherInitialState } from "../../type/weather";
@@ -49,10 +49,14 @@ export const getWeatherForecastInfoOfCity = createAsyncThunk(
   }
 );
 
-export const userSlice = createSlice({
-  name: "user",
+export const weatherSlice = createSlice({
+  name: "weather",
   initialState,
-  reducers: {},
+  reducers: {
+    setError: (state: WeatherInitialState, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getWeatherInfoOfCity.pending, (state: WeatherInitialState) => {
@@ -120,4 +124,6 @@ export const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
+export const { setError } = weatherSlice.actions;
+
+export default weatherSlice.reducer;
